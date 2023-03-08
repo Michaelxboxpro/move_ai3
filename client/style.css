@@ -77,12 +77,12 @@ body {
 }
 
 .ai .profile {
-  background: #ffffff;
+  background: #ffffff00;
 }
 
 .profile img {
-  width: 60%;
-  height: 60%;
+  width: 80%;
+  height: 80%;
   object-fit: contain;
 }
 
