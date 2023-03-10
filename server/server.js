@@ -27,12 +27,12 @@ app.post('/', async (req, res) => {
 
     const response = await openai.createCompletion({
       model: "gpt-3.5-turbo",
-      prompt: `${prompt}`,
-      temperature: 0.6, // Higher values means the model will take more risks.
-      max_tokens: 2000, // The maximum number of tokens to generate in the completion. Most models have a context length of 2048 tokens (except for the newest models, which support 4096).
-      top_p: 1, // alternative to sampling with temperature, called nucleus sampling
-      frequency_penalty: 0.1, // Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
-      presence_penalty: 0, // Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
+      messages: [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Who won the world series in 2020?"},
+        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
+        {"role": "user", "content": "Where was it played?"}
+      ]
     });
 
     res.status(200).send({
